@@ -1,0 +1,17 @@
+<h1>Welcome <%= @user.name %></h1>
+<h4>Username: (<%= @user.username %>)</h4>
+
+<h2>My Packs</h2>
+  <ul>
+    <% @user.packs.each do |pack| %>
+      <li><%= link_to pack.name, pack_path(pack) %></li>
+    <% end %>
+  </ul>
+
+  <h2>Create A New Pack</h2>
+  <%= form_for @location do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.submit %>
+
+  <% end %>
