@@ -1,7 +1,10 @@
 <h1>Select</h1>
 
-<!-- @selection_items -->
 
+<!-- @user_selections -->
 <%= form_for @pack do |f| %>
-  <%= f.collection_check_boxes %>
-<% end %>
+  <div>
+    <%= f.collection_check_boxes :item_ids, @user_selections, :id, :title %>
+  </div>
+<%=f.submit%>
+<%end%>

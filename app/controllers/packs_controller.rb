@@ -15,18 +15,29 @@ class PacksController < ApplicationController
 
   def show
     #code
+    @pack = Pack.find_by(id: params[:id])
   end
 
   def edit
     @pack = Pack.find_by(id:params[:id])
-    @pack.get_items_to_display(@pack.temp_f, @pack.weather_desc)
-    # redirect_to pack_path(@pack)
+    @user_selections = @pack.get_items_to_display(@pack.temp_f, @pack.weather_desc)
+    #come back to disassociate
+  end
+
+  def update
+    @pack = Pack.find_by(id:params[:id])
+    item_ids = params[:pack][:item_ids]
+    item_ids.each do |item_id|
+      item = Item.find_by(id: item_id)
+      @pack.items << item unless item == nil
+    end
+    redirect_to pack_path(@pack)
   end
 
   private
 
   def pack_params
-    params.require(:pack).permit(:location_name)
+    params.require(:pack).permit(:location_name,:item_ids) #put ids in here
   end
 
 end
