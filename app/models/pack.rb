@@ -1,46 +1,68 @@
-
 class Pack < ApplicationRecord
   has_many :pack_items
   has_many :items, through: :pack_items
   belongs_to :user
 
-  weather_hash = {
+  WEATHER_HASH = {
 
-  cold:["whiskey","parka","tea","gloves","pipe","crochet","polar bear","sweater","icicle","indoor","candle","cashmere","wool","igloo","snowflake","hat","scarf","sweater","soup","zine","boots","autumn","pumpkin spice","flannel","cocktail","museum","hibernation","flask","fireplace","hockey"],
+    cold:["whiskey","parka","tea","gloves","pipe","crochet","polar bear","sweater","icicle","indoor","candle","cashmere","wool","igloo","snowflake","hat","scarf","sweater","soup","zine","boots","autumn","pumpkin spice","flannel","cocktail","museum","hibernation","flask","fireplace","hockey"],
 
-  temperate:["spring", "flowers", "picnic", "wine", "lavender", "craft beer", "fishing", "salad", "mountain", "hiking", "sneakers", "bicycle", "lunchbox", "denim", "t-shirt", "camping", "cabin", "bonfire", "gardening", "baseball","tennis","golf","yoga"],
+    temperate:["spring", "flowers", "picnic", "wine", "lavender", "craft beer", "fishing", "salad", "mountain", "hiking", "sneakers", "bicycle", "lunchbox", "denim", "t-shirt", "camping", "cabin", "bonfire", "gardening", "baseball","tennis","golf","yoga"],
 
-  hot:["beach", "tropical", "flip flops", "flamingo", "linen", "sand", "ice cream", "beach towel", "lemonade", "festival", "watermelon", "refreshing", "popsicle", "tank top", "swim suit","desert","swimming", "shorts"],
+    hot:["beach", "tropical", "flip flops", "flamingo", "linen", "sand", "ice cream", "beach towel", "lemonade", "festival", "watermelon", "refreshing", "popsicle", "tank top", "swim suit","desert","swimming", "shorts"],
 
-  cloudy:["cloud", "gray", "black and white photo"],
+    cloudy:["cloud", "gray", "black and white photo"],
 
-  rainy: ["rain", "umbrella", "raincoat", "rain boots", "rain stick", "rain drop"],
+    rainy: ["rain", "umbrella", "raincoat", "rain boots", "rain stick", "rain drop"],
 
-  sunny: ["sunglasses", "visor", "sunscreen", "happiness"],
+    sunny: ["sunglasses", "visor", "sunscreen", "happiness"],
 
-  stormy: ["thunder" "dark and stormy", "emo", "noah's ark"]
+    stormy: ["thunder" "dark and stormy", "emo", "noah's ark"]
 
   }
 
-def find_items_to_display(temperature, weather_desc)
-  #20 items that the user can select from that fit the temp and description
+def self.weather_hash
+  WEATHER_HASH
 end
 
-def find_association_by_temperature(temp)
+
+def get_items_to_display(temp, weather_desc)
+  array = shuffle_keywords(temp, weather_desc)
+  array.collect { |word| Item.where(keyword: word).shuffle.first }
+end
+
+def shuffle_keywords(temp, weather_desc)
+
+  #20 items that the user can select from that fit the temp and desc
+  array = WEATHER_HASH[find_association_by_temp(temp).to_sym].concat(WEATHER_HASH[find_association_by_desc(weather_desc).to_sym])
+  array.shuffle
+  array[1..20]
+end
+
+def find_association_by_temp(temp)
   case
-  when temp > 82
+  when temp.to_i > 82
     return "hot"
-  when temp >= 55 && temp <=82
+  when temp.to_i >= 55 && temp.to_i <=82
     return "temperate"
-  when temp < 55
+  when temp.to_i < 55
     return "cold"
   end
 end
 
-def find_association_by_description(weather_desc)
+def find_association_by_desc(weather_desc)
+  #["cloud","overcast"].any? {|w| weather_desc.include?(w)}
   case
-  when condition
-
+  when weather_desc.include?("cloud") || weather_desc.include?("overcast")
+    return "cloudy"
+  when weather_desc.include?("sun")
+    return "sunny"
+  when weather_desc.include?("rain") || weather_desc.include?("mist") || weather_desc.include?("f")
+    return "rainy"
+  when weather_desc.include?("fog")
+    return "stormy"
+  else
+    return "sunny"
   end
 end
 
