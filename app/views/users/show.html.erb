@@ -9,9 +9,9 @@
   </ul>
 
   <h2>Create A New Pack</h2>
-  <%= form_for @location do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <%= form_for @pack do |f| %>
+    <%= f.label :location_name %>
+    <%= f.text_field :location_name %>
     <%= f.submit %>
 
   <% end %>
