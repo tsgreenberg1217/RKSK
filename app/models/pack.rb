@@ -25,11 +25,18 @@ def self.weather_hash
   WEATHER_HASH
 end
 
-
 def get_items_to_display(temp, weather_desc)
   array = shuffle_keywords(temp, weather_desc)
-  array.collect { |word| Item.where(keyword: word).shuffle.first }
+  array.collect { |word| Item.where(keyword: word).shuffle.first }.each do |item|
+    byebug
+    self.items << item
+  end
 end
+
+# def get_items_to_display(temp, weather_desc)
+#   array = shuffle_keywords(temp, weather_desc)
+#   array.collect { |word| Item.where(keyword: word).shuffle.first }
+# end
 
 def shuffle_keywords(temp, weather_desc)
 

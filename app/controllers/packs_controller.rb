@@ -18,9 +18,8 @@ class PacksController < ApplicationController
   end
 
   def edit
-    # byebug
     @pack = Pack.find_by(id:params[:id])
-    @selection_items = @pack.get_items_to_display(@pack.temp_f, @pack.weather_desc)
+    @pack.get_items_to_display(@pack.temp_f, @pack.weather_desc)
     # redirect_to pack_path(@pack)
   end
 
