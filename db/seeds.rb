@@ -36,3 +36,5 @@ stormy: ["thunder" "dark and stormy", "emo", "noah's ark"]
 ItemAdapter.import(weather_hash[:cold])
 ItemAdapter.import(weather_hash[:temperate])
 ItemAdapter.import(weather_hash[:hot])
+
+User.create(name: 'Todd', username: 'tsg')
