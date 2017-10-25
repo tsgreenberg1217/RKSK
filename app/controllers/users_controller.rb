@@ -5,4 +5,11 @@ class UsersController < ApplicationController
     @packs = @user.packs.order('name')
     # the last line will put the packs in alpha order
   end
+
+
+  def new
+  end
+
+  def create
+  end
 end
