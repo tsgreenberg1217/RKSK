@@ -3,15 +3,16 @@
 
 <h2>My Packs</h2>
   <ul>
-    <% @user.packs.each do |pack| %>
+    <% @packs.each do |pack| %>
       <li><%= link_to pack.name, pack_path(pack) %></li>
     <% end %>
   </ul>
 
-  <h2>Create A New Pack</h2>
-  <%= form_for @pack do |f| %>
-    <%= f.label :location_name %>
-    <%= f.text_field :location_name %>
-    <%= f.submit %>
-
-  <% end %>
+  <a name="new">
+    <h2>Create A New Pack</h2>
+    <%= form_for @pack do |f| %>
+      <%= f.label :location_name %>
+      <%= f.text_field :location_name %>
+      <%= f.submit %>
+    <% end %>
+  </div>

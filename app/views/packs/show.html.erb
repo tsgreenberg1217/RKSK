@@ -1,4 +1,9 @@
-<h1>hello, this is the pack show page</h1>
-<% @pack.items.each do |item| %>
-  <%= item.title %>
-<%end%>
+<h1><%= @pack.name %></h1>
+<h2>For <%= @pack.temp_f %> degrees and <%= @pack.weather_desc %> (<%= @pack.find_association_by_desc("mist") %>)</h2>
+<%= link_to "Delete", pack_path(@pack), method: :delete %> <br/>
+<%= link_to "Back to My Packs", user_path(@user) %>
+  <ul>
+    <% @pack.items.each do |item| %>
+      <li><img src = "<%= item.image %>"> <%= link_to item.title, item.url %></li>
+    <%end%>
+  </ul>

@@ -28,17 +28,10 @@ end
 def get_items_to_display(temp, weather_desc)
   array = shuffle_keywords(temp, weather_desc)
   array.collect { |word| Item.where(keyword: word).shuffle.first }.each do |item|
-  #self.items << item unless !item.keyword
   end
 end
 
-# def get_items_to_display(temp, weather_desc)
-#   array = shuffle_keywords(temp, weather_desc)
-#   array.collect { |word| Item.where(keyword: word).shuffle.first }
-# end
-
 def shuffle_keywords(temp, weather_desc)
-
   #20 items that the user can select from that fit the temp and desc
   array = WEATHER_HASH[find_association_by_temp(temp).to_sym].concat(WEATHER_HASH[find_association_by_desc(weather_desc).to_sym])
   array.shuffle
@@ -63,7 +56,7 @@ def find_association_by_desc(weather_desc)
     return "cloudy"
   when weather_desc.include?("sun")
     return "sunny"
-  when weather_desc.include?("rain") || weather_desc.include?("mist") || weather_desc.include?("f")
+  when weather_desc.include?("rain") || weather_desc.include?("mist")
     return "rainy"
   when weather_desc.include?("fog")
     return "stormy"
