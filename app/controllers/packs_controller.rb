@@ -20,6 +20,7 @@ class PacksController < ApplicationController
     #byebug
     @pack.save
     @user_selections = ItemAdapter.import(keywords_ary)
+    Item.destroy_no_pack_items
     redirect_to edit_pack_path(@pack)
   end
 

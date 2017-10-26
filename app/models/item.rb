@@ -17,6 +17,15 @@ class Item < ApplicationRecord
     item.save
   end
 
+  def self.destroy_no_pack_items
+    @items = Item.all
+    @items.each do |item|
+      if item.pack_id == nil
+        item.destroy
+      end
+    end
+  end
+
   # def self.new_hash_from_api(item_hash)
   #   #byebug
   #   item = {}
