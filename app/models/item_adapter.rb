@@ -20,22 +20,13 @@ class ItemAdapter < ApplicationRecord
   # we can use color in here too if we want!
   def self.import(keywords_ary)
     #  byebug
-<<<<<<< HEAD
-
-    keywords_ary.map do |keyword|
-      result = get_results(keyword)
-    Item.new_from_api(result)
-    end
-
-
-=======
     item_array = []
     keywords_ary.each  do |keyword|
       result = get_results(keyword)
       item_array << Item.new_from_api(result)
     end
     return item_array
->>>>>>> d97cfab4bcb53f9f6d79a224fa0fa7de34b139dd
+
      # this line is an array of hashes that can be used to make new items
     # results_ary.map {|item_hash| Item.new_from_api(item_hash) }
     # this returns an array of hashes that can instantiate new item objects
