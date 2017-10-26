@@ -24,14 +24,14 @@
           </div>
 
           <div>
-          <%= submit_tag 'login'%>
+          <a class="waves-effect waves-light btn-large"><%= submit_tag 'login'%></a>
           </div>
           <%end%>
           <div>OR
           </div>
 
           <div>
-            <a class="waves-effect waves-light btn-large"><%= link_to "sign up", new_user_path %></a>
+            <a class="waves-effect waves-light btn-large"><%= button_to("sign up", new_user_path, method: :get) %></a>
           </div>
 
           </div>
