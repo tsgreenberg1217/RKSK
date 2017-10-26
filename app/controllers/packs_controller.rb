@@ -1,5 +1,14 @@
 class PacksController < ApplicationController
 
+  def index
+    @packs = Pack.all
+    if params[:search]
+    @packs = Pack.search(params[:search]).order("created_at DESC")
+  else
+    @packs = Pack.all.order("created_at DESC")
+  end
+  end
+
   def create
     logged_in?
     @pack = Pack.new(pack_params)
