@@ -64,5 +64,8 @@ def find_association_by_desc(weather_desc)
     return "sunny"
   end
 end
+def self.search(search)
+  where("name ILIKE ? OR location_name ILIKE ? OR weather_desc ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%") 
+end
 
 end

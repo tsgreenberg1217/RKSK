@@ -1,8 +1,13 @@
 <h1>Welcome <%= @user.name %></h1>
 <h4>Username: (<%= @user.username %>)</h4>
+<%= form_tag(packs_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Packs" %>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>
 
 <h2>My Packs</h2>
   <ul>
+
     <% @packs.each do |pack| %>
       <li><%= link_to pack.name, pack_path(pack) %></li>
     <% end %>
@@ -16,6 +21,7 @@
       <%= f.submit %>
     <% end %>
   </div>
+  <h2>Need examples?<%= link_to "Look at previous packs", packs_path%><br>
 
 
 

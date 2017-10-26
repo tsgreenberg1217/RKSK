@@ -1,5 +1,14 @@
 class PacksController < ApplicationController
 
+  def index
+    @packs = Pack.all
+    if params[:search]
+    @packs = Pack.search(params[:search]).order("created_at DESC")
+  else
+    @packs = Pack.all.order("created_at DESC")
+  end
+  end
+
   def create
     logged_in?
     @pack = Pack.new(pack_params)
@@ -7,9 +16,11 @@ class PacksController < ApplicationController
     @pack.user = User.find(session[:user_id])
     @pack.temp_f = WeatherAdapter.get_temp(pack_params[:location_name]).to_i
     @pack.weather_desc = WeatherAdapter.get_description(pack_params[:location_name])
+
     # keywords_ary = @pack.shuffle_keywords(@pack.temp_f, @pack.weather_desc)
     @pack.save
     # @user_selections = ItemAdapter.import(keywords_ary)
+
     redirect_to edit_pack_path(@pack)
   end
 
@@ -37,6 +48,7 @@ class PacksController < ApplicationController
       item = Item.find_by(id: item_id)
       @pack.items << item unless item == nil
     end
+    Item.destroy_no_pack_items
     redirect_to pack_path(@pack)
   end
 

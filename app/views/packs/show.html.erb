@@ -3,7 +3,22 @@
 <%= link_to "Delete", pack_path(@pack), method: :delete %> <br/>
 <%= link_to "Back to My Packs", user_path(@user) %>
   <ul>
+    <% total_price = 0.00%>
     <% @pack.items.each do |item| %>
       <li><img src = "<%= item.image %>"> <%= link_to item.title, item.url %></li>
+      $<%= item.price%>
+      <%total_price += item.price.to_f%>
     <%end%>
+    <h3>The total price of this rksk is: $<%=total_price%>
   </ul>
+  <%if total_price > 200.00%>
+  Woah man, slow down.  Fiscal responsibility is hipper than your look
+  <%elsif total_price > 100.00%>
+  We totally agree, you have to spend money to be this different
+  <%elsif total_price > 50.00%>
+  Just starting your trip down the road of originality are we?
+  <%elsif total_price > 25.00%>
+  Try harder dude, a nice felted fox will really spice up your den
+  <%else total_price < 25.00%>
+  You don't seem committed, maybe you don't belong on this site.  Enjoy the ban.
+  <%end%>
