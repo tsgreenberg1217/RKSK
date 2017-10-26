@@ -1,12 +1,39 @@
-<h1>RKSK </h1>
 
-<h3>Login</h3>
-<%= form_tag('/login', method: :post) do%>
-<%= label_tag 'username' %>
-<%= text_field_tag 'username' %>
-<%= label_tag 'password' %>
-<%= password_field_tag 'password' %>
-<%= submit_tag 'login'%>
-<%end%>
-<br>
-<%= link_to('sign up', new_user_path) %>
+<div class="center-align">
+  <h1>RKSK</h1>
+
+
+
+  <div>
+    <h4>Pack for tomorrow, live for today!</h4>
+  </div>
+  <div class="container">
+
+    <div class="row">
+      <div class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+
+            <%= form_tag('/login', method: :post) do%>
+            <%= text_field_tag 'username', nil, placeholder: "Enter Your Username"%>
+
+          </div>
+          <div class="input-field col s6">
+
+            <%= password_field_tag 'password', nil, placeholder: "Enter Your Password"%>
+          </div>
+
+          <div>
+          <%= submit_tag 'login'%>
+          </div>
+          <%end%>
+          <div>OR
+          </div>
+
+          <div>
+            <a class="waves-effect waves-light btn-large"><%= link_to "sign up", new_user_path %></a>
+          </div>
+
+          </div>
+
+        </div>
