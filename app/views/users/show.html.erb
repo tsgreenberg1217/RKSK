@@ -1,30 +1,45 @@
-<h1>Welcome <%= @user.name %></h1>
-<h4>Username: (<%= @user.username %>)</h4>
-<%= form_tag(packs_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Packs" %>
-    <%= submit_tag "Search", :name => nil %>
-<% end %>
+
+
+
+  <h1>Welcome <%= @user.name %></h1>
+  <h4>Username: (<%= @user.username %>)</h4>
+  <%= form_tag(packs_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Packs" %>
+      <i class="material-icons left">search</i><%= submit_tag "Search", :name => nil %>
+  <% end %>
+
+
+
+
 
 <h2>My Packs</h2>
-  <ul>
 
-    <% @packs.each do |pack| %>
-      <li><%= link_to pack.name, pack_path(pack) %></li>
-    <% end %>
-  </ul>
+<!-- Image display partial start -->
 
-  <a name="new">
-    <h2>Create A New Pack</h2>
-    <%= form_for @pack do |f| %>
-      <%= f.label :location_name %>
-      <%= f.text_field :location_name %>
-      <%= f.submit %>
-    <% end %>
-  </div>
+<%= render 'layouts/picture_grid.html.erb' %>
+        <!-- Image display partial end -->
+
+
+  <div class="row">
+      <div class="col s6">
+        <h2>Create A New Pack</h2>
+          <%= form_for @pack do |f| %>
+            <%= f.text_field :location_name %>
+              <a class="waves-effect waves-light btn-large"><%= f.submit %></a>
+          <% end %>
+        </div>
+
+
+    </div>
+
+
+
+
+
   <h2>Need examples?<%= link_to "Look at previous packs", packs_path%><br>
 
 
 
-  <button type="button" name="button">
-    <%= link_to("Log Out", logout_path, method: :delete) %>
-  </button>
+        <button type="button" name="button">
+          <%= link_to("Log Out", logout_path, method: :delete) %>
+        </button>

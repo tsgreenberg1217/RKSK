@@ -1,0 +1,18 @@
+<div class="row">
+  <% @packs.each do |pack| %>
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image">
+              <img src="<%= pack.items.first.image %>">
+              <span class="card-title"><%= pack.name %></span>
+            </div>
+            <div class="card-content">
+              <p><%= pack.name %></p>
+            </div>
+            <div class="card-action">
+              <a href="<%= pack_path(pack) %>">View</a>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
