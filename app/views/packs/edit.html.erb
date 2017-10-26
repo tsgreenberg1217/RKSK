@@ -1,22 +1,21 @@
 <h1>Get ready for <%= @pack.location_name %>!</h1>
-
-
-<h3>Today's weather is <%= @pack.weather_desc %> and <%=@pack.temp_f%> Degrees Fahrenheit.</h3>
-
-<h4>Choose 4 items for your new starter pack:</h4>
+  <h3>Today's weather is <%= @pack.weather_desc %> and <%=@pack.temp_f%> Degrees Fahrenheit.</h3>
+    <h4>Choose 4 items for your new starter pack:</h4>
 <!-- @user_selections -->
 <%= form_for @pack do |f| %>
   <div>
     <%= f.label :name, "Name Your Starter Pack"%> <br/>
     <%= f.text_field :name %>
   </div>
+
   <div>
-    <ul>
+
 
       <%= f.collection_check_boxes :item_ids, @user_selections, :id, :title do |b|%>
-         <li><%=b.check_box + b.text%></li>
+    <%= b.label + b.check_box%>
       <% end %>
-    </ul>
+
+
   </div>
 <%=f.submit%>
 <%end%>
