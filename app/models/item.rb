@@ -14,7 +14,7 @@ class Item < ApplicationRecord
     item.description = item_hash["description"].gsub("\n",'')
     item.url = item_hash["url"]
     item.image = item_hash["Images"][0]["url_170x135"]
-    item
+    item.save
   end
 
   # def self.new_hash_from_api(item_hash)
