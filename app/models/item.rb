@@ -14,7 +14,7 @@ class Item < ApplicationRecord
     description = item_hash["description"].gsub("\n",'')
     url = item_hash["url"]
     image = item_hash["Images"][0]["url_170x135"]
-    item = Item.new(title: title, price: price, description: description, url: url, image: image)
+    item = Item.create(title: title, price: price, description: description, url: url, image: image)
     return item
     # item.save
   end
