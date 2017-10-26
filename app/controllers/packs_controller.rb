@@ -3,11 +3,14 @@ class PacksController < ApplicationController
   def create
     logged_in?
     @pack = Pack.new(pack_params)
-    @pack.name = "My #{pack_params[:location_name]} Starter Pack"
+    @pack.name = "My #{@pack.location_name} Starter Pack"
+    @pack.user = User.find(session[:user_id])
     @pack.temp_f = WeatherAdapter.get_temp(pack_params[:location_name]).to_i
     @pack.weather_desc = WeatherAdapter.get_description(pack_params[:location_name])
-    @pack.user = User.find(session[:user_id])  # This is just so the user persists while we don't have authentication setup
+    keywords_ary = @pack.shuffle_keywords(@pack.temp_f, @pack.weather_desc)
+    #byebug
     @pack.save
+    @user_selections = ItemAdapter.import(keywords_ary)
     redirect_to edit_pack_path(@pack)
   end
 
