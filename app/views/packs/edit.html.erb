@@ -10,11 +10,11 @@
 
   <div>
 
-
+    <ul>
       <%= f.collection_check_boxes :item_ids, @user_selections, :id, :title do |b|%>
-    <%= b.label + b.check_box%>
+        <li>  <%= b.check_box + b.label%></li>
       <% end %>
-
+    </ul>
 
   </div>
 <%=f.submit%>
