@@ -20,7 +20,7 @@ class PacksController < ApplicationController
     #byebug
     @pack.save
     @user_selections = ItemAdapter.import(keywords_ary)
-    # Item.destroy_no_pack_items
+
     redirect_to edit_pack_path(@pack)
   end
 
@@ -46,6 +46,7 @@ class PacksController < ApplicationController
       item = Item.find_by(id: item_id)
       @pack.items << item unless item == nil
     end
+    Item.destroy_no_pack_items
     redirect_to pack_path(@pack)
   end
 

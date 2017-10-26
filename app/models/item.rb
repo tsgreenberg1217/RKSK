@@ -20,7 +20,7 @@ class Item < ApplicationRecord
   def self.destroy_no_pack_items
     @items = Item.all
     @items.each do |item|
-      if item.pack_id == nil
+      if item.packs.empty? == true
         item.destroy
       end
     end
