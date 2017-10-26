@@ -4,6 +4,9 @@
 # Make a table with weather conditions mapped to search terms
 # When the weather algorithm is run, it selects all the rows that match those conditions, picks 10 at random and hits the API to get 2 of each of those. Returns that result to the user, who can pick 4 to persist.
 
+
+##TEST
+
 weather_hash = {
 
 cold:["whiskey","parka","tea","gloves","pipe","crochet","polar bear","sweater","icicle","indoor","candle","cashmere","wool","igloo","snowflake","hat","scarf","sweater","soup","zine","boots","autumn","pumpkin spice","flannel","cocktail","museum","hibernation","flask","fireplace","hockey"],
