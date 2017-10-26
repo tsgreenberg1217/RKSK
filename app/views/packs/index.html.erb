@@ -3,7 +3,7 @@
 
 
 <%@packs.each do |pack|%>
-<%=link_to pack.name, pack_path(pack)%> by <%=pack.user.username%>
+<%=link_to pack.name, pack_path(pack)%> by <%=pack.user.username%><br>
 <%end%>
 <% if @packs.blank? %>
   <h4>There are no packs containing the term <%= params[:search] %>.</h4>
