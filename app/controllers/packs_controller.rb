@@ -18,8 +18,9 @@ class PacksController < ApplicationController
     @pack.weather_desc = WeatherAdapter.get_description(pack_params[:location_name])
     keywords_ary = @pack.shuffle_keywords(@pack.temp_f, @pack.weather_desc)
     #byebug
-    @pack.save
+
     @user_selections = ItemAdapter.import(keywords_ary)
+    @pack.save
 
     redirect_to edit_pack_path(@pack)
   end

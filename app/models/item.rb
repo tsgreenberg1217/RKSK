@@ -8,13 +8,14 @@ class Item < ApplicationRecord
   def self.new_from_api(item_hash)
     #byebug
     #item_hash = item_hash[0]
-    item = Item.new
-    item.title = (item_hash["title"])
+    item = Item.create
+    item.title = item_hash["title"]
     item.price = item_hash["price"]
     item.description = item_hash["description"].gsub("\n",'')
     item.url = item_hash["url"]
     item.image = item_hash["Images"][0]["url_170x135"]
-    item.save
+    # item.save
+    
   end
 
   def self.destroy_no_pack_items

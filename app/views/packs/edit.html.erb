@@ -11,6 +11,7 @@
   </div>
   <div>
     <ul>
+  
       <%= f.collection_check_boxes :item_ids, @user_selections, :id, :title do |b|%>
          <li><%=b.check_box + b.text%></li>
       <% end %>

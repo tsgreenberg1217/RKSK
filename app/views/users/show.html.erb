@@ -7,6 +7,7 @@
 
 <h2>My Packs</h2>
   <ul>
+
     <% @packs.each do |pack| %>
       <li><%= link_to pack.name, pack_path(pack) %></li>
     <% end %>
