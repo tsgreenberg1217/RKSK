@@ -2,9 +2,14 @@
 @@font-face {
   font-family: 'Dosis', sans-serif;
   src:url('https://fonts.googleapis.com/css?family=Dosis:700');
+  font-family: 'Lora', serif;
+  src:url('https://fonts.googleapis.com/css?family=Dosis:700');
 }
 
 
 body{
   font-family: 'Dosis', sans-serif;
+}
+h3,h4,p{
+  font-family: 'Lora', serif;
 }
