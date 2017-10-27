@@ -4,6 +4,8 @@
   <h1><%= @welcome %>, <%= @user.name %>!</h1>
   <p>Logged in as (<%= @user.username %>). <%= link_to("Log out?", logout_path, method: :delete) %> </p>
 
+
+
   <div class="row">
       <div class="col s6">
         <h2>Search All Packs</h2>
@@ -43,3 +45,5 @@
 
 
   <h3>Need some inspiration? Check out other <%= link_to "featured packs", packs_path%>.</h3>
+
+  <%= render 'layouts/footer.html.erb' %>
