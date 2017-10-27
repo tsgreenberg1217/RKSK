@@ -8,9 +8,10 @@ class Item < ApplicationRecord
   def self.new_from_api(item_hash)
     #byebug
     #item_hash = item_hash[0
-    title = (item_hash["title"]).gsub(/\s|"|'/, ' ')
+    title = (item_hash["title"]).gsub(/[~`*,']/, ' ')
     price = item_hash["price"]
-    description = item_hash["description"].gsub("\n",'')
+    description = ((item_hash["description"])[/[^\n]+/])
+    # description = item_hash["description"].gsub("\n",'')
     url = item_hash["url"]
     image = item_hash["Images"][0]["url_170x135"]
     item = Item.create(title: title, price: price, description: description, url: url, image: image)
