@@ -7,12 +7,12 @@
   <h3>Today's weather is <%= @pack.weather_desc %> and <%=@pack.temp_f%> Degrees Fahrenheit.</h3>
     <h4>Choose 4 items for your new starter pack:</h4>
 <!-- @user_selections -->
-<%= form_for @pack do |f| %>
-  <div>
-    <%= f.label :name, "Name Your Starter Pack"%> <br/>
-    <%= f.text_field :name %>
-  </div>
 
+<%= form_for @pack do |f| %>
+  <div class="input-field inline">
+    <h4>Name Your Pack: <%= f.text_field :name %></h4></div>
+
+  <h4>Choose some items for your new starter pack:</h4>
   <div>
 
     <%=%>
@@ -24,5 +24,7 @@
     </ul>
 
   </div>
-<%=f.submit%>
-<%end%>
+  <div class="center-align">
+    <a class="waves-effect waves-light btn-large"><i class="small material-icons">flight_takeoff</i><%=f.submit "Get My Pack" %></a>
+    <%end%>
+  </div>
