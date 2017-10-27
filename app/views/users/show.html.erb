@@ -1,7 +1,7 @@
 
 
 
-  <h1>Welcome <%= @user.name %></h1>
+  <h1><%= @welcome %>, <%= @user.name %>!</h1>
   <h4>Username: (<%= @user.username %>)</h4>
   <%= form_tag(packs_path, :method => "get", id: "search-form") do %>
       <%= text_field_tag :search, params[:search], placeholder: "Search Packs" %>
@@ -10,7 +10,7 @@
 
 
 
-
+<div class="divider"></div>
 
 <h2>My Packs</h2>
 
