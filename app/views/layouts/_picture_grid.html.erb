@@ -1,9 +1,14 @@
 <div class="row">
   <% @packs.each do |pack| %>
+
         <div class="col s3">
           <div class="card">
             <div class="card-image">
+              <%if pack.items.any?%>
               <img src="<%= pack.items.first.image %>">
+              <%else%>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg">
+              <%end%>
               <span class="card-title"><%= pack.name %></span>
             </div>
             <div class="card-content">
