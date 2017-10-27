@@ -5,7 +5,7 @@ class PacksController < ApplicationController
     if params[:search]
     @packs = Pack.search(params[:search]).order("created_at DESC")
   else
-    @packs = Pack.all.last(5)
+    @packs = Pack.all.last(20)
   end
   end
 
