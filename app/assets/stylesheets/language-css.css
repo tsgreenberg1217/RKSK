@@ -1,0 +1,10 @@
+
+@@font-face {
+  font-family: 'Dosis', sans-serif;
+  src:url('https://fonts.googleapis.com/css?family=Dosis:700');
+}
+
+
+body{
+  font-family: 'Dosis', sans-serif;
+}
