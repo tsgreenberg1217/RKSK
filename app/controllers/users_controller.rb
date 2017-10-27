@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def show
 
     logged_in?
+    @welcome = ["Hello", "Hey", "What's up","Hi","Welcome","Hola"].sample
     @user = User.find_by(id: params[:id])
     @pack = Pack.new
     @packs = @user.packs.order('name')
