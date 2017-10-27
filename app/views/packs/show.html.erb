@@ -1,3 +1,5 @@
+
+
 <h1><%= @pack.name %></h1>
 <h2>My pack for <%= @pack.temp_f %> degrees and <%= @pack.weather_desc %></h2>
 <%= link_to "Delete This Pack", pack_path(@pack), method: :delete %> <br/>
@@ -41,7 +43,7 @@
       <%total_price += item.price.to_f%>
     <%end%>
 
-    <h4>The total price of this RKSK is: $<%=total_price%>.</h4>
+    <h4>The total price of this RKSK is: <%= number_to_currency(total_price) %>.</h4>
 
 
     <h5>
