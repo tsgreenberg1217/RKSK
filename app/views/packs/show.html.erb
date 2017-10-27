@@ -9,7 +9,7 @@
       $<%= item.price%>
       <%total_price += item.price.to_f%>
     <%end%>
-    <h3>The total price of this rksk is: $<%=total_price%>
+    <h3>The total price of this rksk is: $<%="%0.2f" %total_price%>
   </ul>
   <%if total_price > 200.00%>
   Woah man, slow down.  Fiscal responsibility is hipper than your look
