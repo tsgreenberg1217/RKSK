@@ -1,23 +1,28 @@
 
 
 
-  <h1>Welcome <%= @user.name %></h1>
-  <h4>Username: (<%= @user.username %>)</h4>
-  <%= form_tag(packs_path, :method => "get", id: "search-form") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search Packs" %>
-      <i class="material-icons left">search</i><%= submit_tag "Search", :name => nil %>
-  <% end %>
+  <h1><%= @welcome %>, <%= @user.name %>!</h1>
+  <p>Logged in as (<%= @user.username %>). <%= link_to("Log out?", logout_path, method: :delete) %> </p>
+
+  <div class="row">
+      <div class="col s6">
+        <h2>Search All Packs</h2>
+          <%= form_tag(packs_path, :method => "get", id: "search-form") do %>
+              <%= text_field_tag :search, params[:search], placeholder: "Search Packs" %>
+            <a class="waves-effect waves-light btn"><i class="small material-icons">search</i><%= submit_tag "Search", :name => nil %></a>
+          <% end %>
+      </div>
+    </div>
 
 
 
-
+<div class="divider"></div>
 
 <h2>My Packs</h2>
 
-<!-- Image display partial start -->
-
-<%= render 'layouts/picture_grid.html.erb' %>
-        <!-- Image display partial end -->
+  <!-- Image display partial start -->
+  <%= render 'layouts/picture_grid.html.erb' %>
+  <!-- Image display partial end -->
 
 
   <div class="row">
@@ -33,13 +38,8 @@
     </div>
 
 
+  <div class="divider"></div>
 
 
 
-  <h2>Need examples?<%= link_to "Look at previous packs", packs_path%><br>
-
-
-
-        <button type="button" name="button">
-          <%= link_to("Log Out", logout_path, method: :delete) %>
-        </button>
+  <h3>Need some inspiration? Check out other <%= link_to "featured packs", packs_path%>.</h3>
