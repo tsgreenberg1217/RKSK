@@ -2,14 +2,7 @@ class Pack < ApplicationRecord
   has_many :pack_items
   has_many :items, through: :pack_items
   belongs_to :user
-  validate :has_four, :on => :update
 
-
-  def has_four
-    if self.items.count != 4
-      errors.add(:items, 'must choose four items')
-    end
-  end
 
 
   WEATHER_HASH = {
