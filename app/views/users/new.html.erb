@@ -8,7 +8,7 @@
         <div class="input-field col s6">
           <%= form_for :user, url: '/users' do |f| %>
             Name: <%= f.text_field :name, placeholder: "Enter Your Name" %> </br></br>
-            Username: <%= f.text_field :username, placeholder: "you@rksk.com" %> </br></br>
+            Username: <%= f.text_field :username, placeholder: "Enter A Username" %> </br></br>
 
             Password: <%= f.password_field :password %></br></br>
             Re-Enter Your Password: <%= f.password_field :password_confirmation %></br></br>
@@ -18,8 +18,7 @@
             <a class="waves-effect waves-light btn-large"><%= f.submit "Sign Up" %></a>
           <% end %>
         </div>
-        <div class="col s6">
-          <img src="/Users/ariel/dev/labs/rksk/app/assets/images/signup.png">
+        <img class="materialboxed" src="https://5ad7q3a4mi737b0ze2x0pml2-wpengine.netdna-ssl.com/wp-content/uploads/sites/4/2015/10/thingsorganizedneatly4.png">
         </div>
 
       </div>
