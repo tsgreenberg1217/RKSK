@@ -16,11 +16,7 @@ class PacksController < ApplicationController
     @pack.user = User.find(session[:user_id])
     @pack.temp_f = WeatherAdapter.get_temp(pack_params[:location_name]).to_i
     @pack.weather_desc = WeatherAdapter.get_description(pack_params[:location_name])
-
-    # keywords_ary = @pack.shuffle_keywords(@pack.temp_f, @pack.weather_desc)
     @pack.save
-    # @user_selections = ItemAdapter.import(keywords_ary)
-
     redirect_to edit_pack_path(@pack)
   end
 
@@ -43,7 +39,7 @@ class PacksController < ApplicationController
     logged_in?
     find_pack
     @pack.update(pack_params)
-    item_ids = params[:pack][:item_ids]
+    item_ids = (params[:pack][:item_ids]).reject { |c| c.empty? }
     item_ids.each do |item_id|
       item = Item.find_by(id: item_id)
       @pack.items << item unless item == nil

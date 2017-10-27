@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    
+
     logged_in?
     @user = User.find_by(id: params[:id])
     @pack = Pack.new

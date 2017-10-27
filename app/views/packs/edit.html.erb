@@ -1,3 +1,8 @@
+<% if @pack.errors.any? %>
+  <h2>Must choose four bro...</h2>
+<%end%>
+
+
 <h1>Get ready for <%= @pack.location_name %>!</h1>
   <h3>Today's weather is <%= @pack.weather_desc %> and <%=@pack.temp_f%> Degrees Fahrenheit.</h3>
     <h4>Choose 4 items for your new starter pack:</h4>
@@ -9,6 +14,8 @@
   </div>
 
   <div>
+
+    <%=%>
 
     <ul>
       <%= f.collection_check_boxes :item_ids, @user_selections, :id, :title do |b|%>
