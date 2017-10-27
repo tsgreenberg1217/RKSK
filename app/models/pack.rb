@@ -7,19 +7,23 @@ class Pack < ApplicationRecord
 
   WEATHER_HASH = {
 
+
     cold:["whiskey","parka","tea","gloves","pipe","crochet","polar bear","sweater","icicle","indoor","candle","cashmere","wool","igloo","snowflake","fur hat","scarf","sweater","soup","zine","boots","autumn","pumpkin spice","flannel","cocktail","museum","hibernation","flask","fireplace","hockey"],
 
-    temperate:["spring", "flowers", "picnic", "wine", "lavender", "craft beer", "fishing", "salad", "mountain", "hiking", "sneakers", "bicycle", "lunchbox", "denim", "t-shirt", "camping", "cabin", "bonfire", "gardening", "baseball","tennis","golf","yoga"],
+    chilly:["autumn", "fall", "leaves", "pumpkins", "thanksgiving", "turkey", "cranberry", "stuffing", "halloween", "scary", "apples", "jacket", "stout", "porter", "frost", "harvest", "rakes", "apple cider", "doughnuts", "flannel",],
+
+    warm:["spring", "flowers", "picnic", "wine", "lavender", "craft beer", "fishing", "salad", "mountain", "hiking", "sneakers", "bicycle", "lunchbox", "denim", "t-shirt", "camping", "cabin", "bonfire", "gardening", "baseball", "tennis", "golf", "yoga"],
 
     hot:["beach", "tropical", "flip flops", "flamingo", "linen", "sand", "ice cream", "beach towel", "lemonade", "festival", "watermelon", "refreshing", "popsicle", "tank top", "swim suit","desert","swimming", "shorts","palm"],
 
-    cloudy:["cloud", "cloud", "cloud","cloud","gray", "gray", "gray", "black and white photo","hazy","stormy"],
+    cloudy:["cloud", "cloud", "cloud","cloud","gray", "gray", "gray", "black and white photo","hazy","stormy", "cloud", "gray", "black and white photo", "dark", "fog", "haze", "gloomy", "foreboding", "dusk", "cooler", "rain", "umbrella", "raincoat", "rain boots", "rain stick", "rain drop", "shower", "precipitation", "moisture", "torrent", "water resistant", "waterfall", "mud", "irrigation", "muddy", "slippery", "chilly"],
 
-    rainy: ["rain", "rain", "rain", "umbrella", "umbrella", "raincoat", "raincoat", "rain boots", "rain stick", "rain drop", "raining","wet", "flood","misty","monsoon","puddle","droplet","thunder","lightning"],
+    rainy: ["rain", "rain", "rain", "umbrella", "umbrella", "raincoat", "raincoat", "rain boots", "rain stick", "rain drop", "raining","wet", "flood","misty","monsoon","puddle","droplet","thunder","lightning","sunglasses", "visor", "sunscreen", "happiness", "bright", "shade", "dry", "warm", "airy", "cheerful", "nice", "pleasant"],
 
     sunny: ["sunglasses", "sunglasses", "sunglasses", "baseball cap","baseball cap", "sombrero", "wide brim", "visor", "sunscreen","sunscreen", "sunscreen", "happiness", "breeze"],
 
-    stormy: ["thunder","thunder", "dark and stormy", "emo", "noah's ark","storm","cloud","stormy","stormy","stormy","stormy","cloud", "cloud"]
+    stormy: ["thunder","thunder", "dark and stormy", "emo", "noah's ark","storm","cloud","stormy","stormy","stormy","stormy","cloud", "cloud","thunder" "dark and stormy", "emo", "noah's ark", "tempest", "dark", "typhoon", "tornado", "advisory", "gust", "windy", "meteorological", "hail", "intense", "cyclone"]
+
 
   }
 
@@ -54,9 +58,11 @@ def find_association_by_temp(temp)
   case
   when temp.to_i > 80
     return "hot"
-  when temp.to_i >= 54 && temp.to_i <=80
-    return "temperate"
-  when temp.to_i < 54
+  when temp.to_i >= 65 && temp.to_i <=80
+    return "warm"
+  when temp.to_i >= 40 && temp.to_i <=65
+    return "chilly"
+  when temp.to_i < 40
     return "cold"
   end
 end
