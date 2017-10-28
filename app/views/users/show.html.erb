@@ -4,11 +4,13 @@
   <h1><%= @welcome %>, <%= @user.name %>!</h1>
   <p>Logged in as (<%= @user.username %>). <%= link_to("Log out?", logout_path, method: :delete) %> </p>
 
+
+
   <div class="row">
       <div class="col s6">
         <h2>Search All Packs</h2>
           <%= form_tag(packs_path, :method => "get", id: "search-form") do %>
-              <%= text_field_tag :search, params[:search], placeholder: "Search All Packs" %>
+              <%= text_field_tag :search, params[:search], placeholder: "Search packs by location or weather" %>
             <a class="waves-effect waves-light btn"><i class="small material-icons">search</i><%= submit_tag "Search", :name => nil %></a>
           <% end %>
       </div>
@@ -28,6 +30,7 @@
   <div class="row">
       <div class="col s6">
         <h2>Create A New Pack</h2>
+        <p>Enter any city you'd like to visit and we'll help you create a unique pack to bring along!</p>
           <%= form_for @pack do |f| %>
             <%= f.text_field :location_name, placeholder: "Where do you want to go?" %>
               <a class="waves-effect waves-light btn-large"><%= f.submit %></a>
@@ -42,4 +45,6 @@
 
 
 
-  <h3>Need some inspiration? Check out other <%= link_to "featured packs", packs_path%>.</h3>
+  <h5>Need some inspiration? Check out other <%= link_to "featured packs", packs_path%>.</h5>
+
+  <%= render 'layouts/footer.html.erb' %>
