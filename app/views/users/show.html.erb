@@ -9,11 +9,22 @@
   <div class="row">
       <div class="col s6">
         <h2>Search All Packs</h2>
+          <p>Search by location or weather conditions to see popular RKSKs designed by other users. </p>
           <%= form_tag(packs_path, :method => "get", id: "search-form") do %>
-              <%= text_field_tag :search, params[:search], placeholder: "Search packs by location or weather" %>
-            <a class="waves-effect waves-light btn"><i class="small material-icons">search</i><%= submit_tag "Search", :name => nil %></a>
+              <%= text_field_tag :search, params[:search], placeholder: "What kind of packs do you want to see?" %>
+            <a class="waves-effect waves-light btn-large"><i class="small material-icons">search</i><%= submit_tag "Search", :name => nil %></a>
           <% end %>
       </div>
+
+      <div class="col s6">
+        <h2>Create A New Pack</h2>
+        <p>Enter any city you'd like to visit and we'll help you create a unique pack to bring along!</p>
+          <%= form_for @pack do |f| %>
+            <%= f.text_field :location_name, placeholder: "Where do you want to go?" %>
+              <a class="waves-effect waves-light btn-large"><%= f.submit %></a>
+          <% end %>
+        </div>
+
     </div>
 
 
@@ -27,18 +38,6 @@
   <!-- Image display partial end -->
 
 
-  <div class="row">
-      <div class="col s6">
-        <h2>Create A New Pack</h2>
-        <p>Enter any city you'd like to visit and we'll help you create a unique pack to bring along!</p>
-          <%= form_for @pack do |f| %>
-            <%= f.text_field :location_name, placeholder: "Where do you want to go?" %>
-              <a class="waves-effect waves-light btn-large"><%= f.submit %></a>
-          <% end %>
-        </div>
-
-
-    </div>
 
 
   <div class="divider"></div>
