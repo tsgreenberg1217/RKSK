@@ -3,8 +3,12 @@
 
 <h1><%= @pack.name %></h1>
 <h3>My RKSK for a day that's <%= @pack.temp_f %> degrees and <%= @pack.weather_desc %>.</h3>
-<%= link_to "Delete This Pack", pack_path(@pack), method: :delete %> <br/>
 
+<% if @pack.user == @user  %>
+  <%= link_to "Delete This Pack", pack_path(@pack), method: :delete %> <br/>
+<% else %>
+  <p>Pack by <%= @pack.user %>
+<% end %>
 
 <div class="divider"></div>
 

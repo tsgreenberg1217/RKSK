@@ -7,4 +7,12 @@
   <h4>There are no packs containing the term <%= params[:search] %>.</h4>
 <% end %>
 
+
+
+
+<div class="divider"></div>
+<div class="center-align">
+  <a class="waves-effect waves-light btn-large"><%= button_to("Back to My Packs", user_path(@user), method: :get) %></a>
+  <br/><br/>
+</div>
 <%= render 'layouts/footer.html.erb' %>
