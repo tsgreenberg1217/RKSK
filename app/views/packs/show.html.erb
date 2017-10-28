@@ -7,7 +7,7 @@
 <% if @pack.user == @user  %>
   <%= link_to "Delete This Pack", pack_path(@pack), method: :delete %> <br/>
 <% else %>
-  <p>Pack by <%= @pack.user %>
+  <p>Pack by <%= @pack.user.username %>
 <% end %>
 
 <div class="divider"></div>
