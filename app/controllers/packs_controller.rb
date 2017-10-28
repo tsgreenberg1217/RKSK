@@ -2,18 +2,19 @@ class PacksController < ApplicationController
 
   def index
     @packs = Pack.all
+    @user = current_user
     if params[:search]
-    @packs = Pack.search(params[:search]).order("created_at DESC")
-  else
-    @packs = Pack.all.last(20)
-  end
+      @packs = Pack.search(params[:search]).order("created_at DESC")
+    else
+      @packs = Pack.all.last(20)
+    end
   end
 
   def create
     logged_in?
     @pack = Pack.new(pack_params)
     @pack.name = "My #{@pack.location_name} Starter Pack"
-    @pack.user = User.find(session[:user_id])
+    @pack.user = current_user
     @pack.temp_f = WeatherAdapter.get_temp(pack_params[:location_name]).to_i
     @pack.weather_desc = WeatherAdapter.get_description(pack_params[:location_name])
     @pack.save
@@ -23,7 +24,7 @@ class PacksController < ApplicationController
   def show
     logged_in?
     find_pack
-    @user = @pack.user
+    @user = current_user
     # @user instance may need to change w/ authentication
   end
 
@@ -53,7 +54,7 @@ class PacksController < ApplicationController
     @user = @pack.user
     # @user instance may need to change w/ authentication
     @pack.destroy
-    redirect_to user_path(@user)
+    redirect_to user_path(current_user)
   end
 
   private
@@ -69,6 +70,10 @@ class PacksController < ApplicationController
   private
   def logged_in?
     return head(:forbidden) unless session.include? :user_id
+  end
+
+  def current_user
+    User.find(session[:user_id])
   end
 
 end

@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   def self.new_from_api(item_hash)
     #byebug
     #item_hash = item_hash[0
-    title = (item_hash["title"]).gsub(/[~`*,']/, ' ')
+    title = (item_hash["title"]).gsub(/[~`*,'‘’“”]/, ' ')
     price = item_hash["price"]
     description = ((item_hash["description"])[/[^\n]+/])
     # description = item_hash["description"].gsub("\n",'')
