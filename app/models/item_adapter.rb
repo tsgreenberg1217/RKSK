@@ -1,6 +1,6 @@
 class ItemAdapter < ApplicationRecord
 
-  KEY = "mxo98hn36jc699lhyusekstd"
+  KEY = ENV["etsy_key"]
   # ROUTE = "https://openapi.etsy.com/v2/listings/active?api_key=#{KEY}&keywords="
   ROUTE="https://openapi.etsy.com/v2/listings/active?includes=Images(url_170x135)&fields=title,price,description,url&limit=1&api_key=#{KEY}&keywords="
 
