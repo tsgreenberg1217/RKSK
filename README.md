@@ -1,25 +1,61 @@
-# RKSK (pronouced "rucksack")
-## check out the demo [here](https://rksk.herokuapp.com/login)
+## RKSK
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+_It's pronounced "rucksack" ;)_
+Source for quirky items to buy for a vacation based on the destination’s climate. Users can log in to create a pack of items for their trip, as well as search and view other users' packs. Weather from the [World Weather Online API](https://developer.worldweatheronline.com/api/) and items sourced from the [Etsy API](https://www.etsy.com/developers/).
 
-Things you may want to cover:
+## Key Technologies, Packages, and Gems
 
-* Ruby version
+* Front End
+  * Ruby on Rails
+  * Material UI
+* Back End
+  * Rails
+  * User login authentication with bcrypt
+  * Postgres database
 
-* System dependencies
+## Core Features
 
-* Configuration
+* Create a pack of items for a trip based on the destination's API-generated weather
+* Search other users' packs by location, keyword, or weather
+* View other users' previously created packs
+* User can delete own packs
+* Total value of each pack calculated based on Etsy prices
+* Individual items link out to their respective Etsy listings
 
-* Database creation
+## Demo
 
-* Database initialization
+[View live demo here](https://rksk.herokuapp.com/login)
 
-* How to run the test suite
+![rksk login](https://media.giphy.com/media/3oFzmeXuqLVN2zEDcc/giphy.gif)
 
-* Services (job queues, cache servers, search engines, etc.)
+Users choose a username and password to create an account.
 
-* Deployment instructions
+ <br />
 
-* ...
+![create pack](https://media.giphy.com/media/3ohc0TNwuR0JEWyG6k/giphy.gif)
+
+Search for a city by name to view a list of items relevant to that city's current weather.
+
+  <br />
+
+![select items](https://media.giphy.com/media/3ohc181vEjwQXfJl6g/giphy.gif)
+
+Select items for that trip's pack and customize the pack's name.
+
+  <br />
+
+![view on etsy](https://media.giphy.com/media/l1IBhFlmmtL8tW4vK/giphy.gif)
+
+View original item listings on Etsy and the total cost to purchase the pack based on Etsy's prices.
+
+  <br />
+
+![search packs](https://media.giphy.com/media/xULW8CIzq58a7JD0s0/giphy.gif)
+
+Search for other users' packs by location or weather.
+
+  <br />
+
+![delete pack](https://media.giphy.com/media/xULW8JEPQ3e4vkPhJe/giphy.gif)
+
+Users can view and delete packs they've created.
