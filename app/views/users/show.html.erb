@@ -12,7 +12,7 @@
           <p>Search by location or weather conditions to see popular RKSKs designed by other users. </p>
           <%= form_tag(packs_path, :method => "get", id: "search-form") do %>
               <%= text_field_tag :search, params[:search], placeholder: "What kind of packs do you want to see?" %>
-            <a class="waves-effect waves-light btn-large"><i class="small material-icons">search</i><%= submit_tag "Search", :name => nil %></a>
+            <button class="waves-effect waves-light btn-large"><i class="small material-icons">search</i><%= submit_tag "Search", :name => nil %></button>
           <% end %>
       </div>
 
@@ -21,7 +21,7 @@
         <p>Enter any city you'd like to visit and we'll help you create a unique pack to bring along!</p>
           <%= form_for @pack do |f| %>
             <%= f.text_field :location_name, placeholder: "Where do you want to go?" %>
-              <a class="waves-effect waves-light btn-large"><%= f.submit %></a>
+              <button class="waves-effect waves-light btn-large"><%= f.submit %></button>
           <% end %>
         </div>
 
