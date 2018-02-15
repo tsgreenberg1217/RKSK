@@ -24,7 +24,7 @@ Source for quirky items to buy for a vacation based on the destination’s clima
 
 ## Demo
 
-[View live demo here](https://rksk.herokuapp.com/login)
+[View live demo here](https://myrksk.herokuapp.com/login)
 
 ![rksk login](https://media.giphy.com/media/3oFzmeXuqLVN2zEDcc/giphy.gif)
 
