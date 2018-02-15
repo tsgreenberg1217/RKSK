@@ -1,10 +1,10 @@
 class ItemAdapter < ApplicationRecord
 
-  KEY = 'mxo98hn36jc699lhyusekstd'
+  KEY = ENV['ETSY_KEY']
   # ROUTE = "https://openapi.etsy.com/v2/listings/active?api_key=#{KEY}&keywords="
   ROUTE="https://openapi.etsy.com/v2/listings/active?includes=Images(url_170x135)&fields=title,price,description,url&limit=1&api_key=#{KEY}&keywords="
 
-  SECRET = "0jfed3h7m4"
+  SECRET = ENV['ETSY_SECRET']
 
   def self.get_route
     ROUTE

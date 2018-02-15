@@ -31,12 +31,9 @@
           <button class="waves-effect waves-light btn-large"><%= submit_tag 'login'%></button>
           </div>
           <%end%>
-          <div>
-            OR
-          </div>
 
           <div>
-            <button class="waves-effect waves-light btn-large"><%= button_to("sign up", new_user_path, method: :get) %></button>
+            <p><%= link_to("SIGN UP", new_user_path, method: :get) %></p>
           </div>
 
           </div>

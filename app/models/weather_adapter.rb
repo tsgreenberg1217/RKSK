@@ -1,7 +1,9 @@
+require 'pry'
 class WeatherAdapter < ApplicationRecord
   require 'open-uri'
   def self.local_xml(location)
-      url1  = "http://api.worldweatheronline.com/premium/v1/weather.ashx?q=#{location}&format=xml&num_of_days=5&key=87fa44b4ace84d60bad192619182101"
+      weather_key = ENV["WEATHER_KEY"]
+      url1  = "http://api.worldweatheronline.com/premium/v1/weather.ashx?q=#{location}&format=xml&num_of_days=5&key=#{weather_key}"
       Nokogiri::XML(open(url1))
   end
 
