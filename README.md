@@ -1,5 +1,6 @@
 ## RKSK
-* Check out the demo [here](https://myrksk.herokuapp.com/login)
+* check out the demo [here](https://myrksk.herokuapp.com/login)
+
 _It's pronounced "rucksack" ;)_
 Source for quirky items to buy for a vacation based on the destination’s climate. Users can log in to create a pack of items for their trip, as well as search and view other users' packs. Weather from the [World Weather Online API](https://developer.worldweatheronline.com/api/) and items sourced from the [Etsy API](https://www.etsy.com/developers/).
 
